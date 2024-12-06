@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 我的博客{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        {% for post in posts %}
+        <article class="blog-post">
+            <h2 class="blog-post-title">
+                <a href="{{ url_for('post', filename=post.filename) }}" class="text-decoration-none text-dark">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <p class="blog-post-meta text-muted">{{ post.date.strftime('%Y-%m-%d %H:%M') }}</p>
+            <div class="blog-post-content">
+                {{ post.content | safe | truncate(200) }}
+            </div>
+            <a href="{{ url_for('post', filename=post.filename) }}" class="btn btn-outline-primary btn-sm">
+                阅读全文
+            </a>
+        </article>
+        <hr>
+        {% else %}
+        <p class="text-center">还没有任何文章，去<a href="{{ url_for('new_post') }}">写一篇</a>吧！</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

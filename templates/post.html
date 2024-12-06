@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - 我的博客{% endblock %}
+
+{% block content %}
+<article class="blog-post">
+    <h1 class="blog-post-title">{{ title }}</h1>
+    <div class="blog-post-content mt-4">
+        {{ content | safe }}
+    </div>
+    <hr>
+    <p>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">返回首页</a>
+    </p>
+</article>
+{% endblock %}

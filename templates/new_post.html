@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}写文章 - 我的博客{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <h2>写文章</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">标题</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">内容 (支持Markdown格式)</label>
+                <textarea class="form-control" id="content" name="content" rows="15" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">发布</button>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">取消</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
